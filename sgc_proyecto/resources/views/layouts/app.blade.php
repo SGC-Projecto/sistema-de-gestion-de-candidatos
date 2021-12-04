@@ -6,9 +6,9 @@
 
     <title>@yield('title') - SGC PROYECT</title>
 
-    <!-- Tailwind CSS Link -->
+    <!-- Tailwind CSS Link 
     <link rel="stylesheet"
-          href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.0.1/tailwind.min.css">
+          href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.0.1/tailwind.min.css"> -->
 </head>
 <body class="bg-gray-100 text-gray-800">
 

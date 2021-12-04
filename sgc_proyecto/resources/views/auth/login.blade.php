@@ -25,8 +25,10 @@
          text-red-600 p-2">* {{ $message }}</p>
         @enderror
 
-        <button type="submit" class="rounded-md bg-indigo-500 w-full text-lg
-         text-white font-semibold p-2 my-3 hover:bg-indigo-600 focus:bg-indigo-600">Send</button>
+        
+            <button type="submit" class="rounded-md bg-indigo-500 w-full text-lg
+            text-white font-semibold p-2 my-3 hover:bg-indigo-600 focus:bg-indigo-600">Send</button> 
+        
 
 
     </form>
