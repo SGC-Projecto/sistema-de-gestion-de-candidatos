@@ -1,53 +1,46 @@
 @extends('layouts.app')
-
+@section('meta')
+<link href="{{ asset('css/login-register.css') }}" rel="stylesheet" type="text/css" >
+@endsection
 @section('title', 'register')
 
 @section('content')
 
-    <div class= "block mx-auto my-12 p-8 bg-white w-1/3 border border-gray-200 rounded-lg shadow-lg">
-        <h1 class="text 3x1 text-center font-bold">Register</h1>
+    <div class= "container col-10 col-sm-8 col-md-6 col-xl-4">
 
-        <form class="mt-4" method="POST" action="">
+        <form class="" method="POST" action="">
             @csrf
+            <h3 class="">Registrarse</h3>
+            <div class="form-group">
+                <label for="name">Ingrese su nombre:</label>
+         <input type="text" class="form-control" placeholder="Nombre"
+                id="name" name="name">
 
-            <input type="text" class="border border-gray-200 rounded-md bg-gray-200 w-full
-             text-lg placeholder-gray-900 p-2 my-2 focus:bg-white" placeholder="Name"
-                   id="name" name="name">
+         @error('name')
+         <p class="error">* {{ $message }}</p>
+         @enderror
+           <label for="email">Ingrese su Email:</label>
+         <input type="email" class="form-control" placeholder="Email"
+                id="email" name="email">
 
-            @error('name')
-            <p class="border border-red-500 rounded-md bg-red-100 w-full
-             text-red-600 p-2">* {{ $message }}</p>
-            @enderror
+         @error('email')
+         <p class="error">* {{ $message }}</p>
+         @enderror
+           <label for="password">Ingrese una contraseña:</label>
+         <input type="password" class="form-control" placeholder="Contraseña"
+                id="password" name="password">
 
-            <input type="email" class="border border-gray-200 rounded-md bg-gray-200 w-full
-             text-lg placeholder-gray-900 p-2 my-2 focus:bg-white" placeholder="Email"
-                   id="email" name="email">
+         @error('password')
+         <p class="error">* {{ $message }}</p>
+         @enderror
+           <label for="password_confirmation">Confirme la contraseña:</label>
+         <input type="password" class="form-control" placeholder="Confirme Contraseña"
+                id="password_confirmation" name="password_confirmation">
 
-            @error('email')
-            <p class="border border-red-500 rounded-md bg-red-100 w-full
-             text-red-600 p-2">* {{ $message }}</p>
-            @enderror
-
-            <input type="password" class="border border-gray-200 rounded-md bg-gray-200 w-full
-             text-lg placeholder-gray-900 p-2 my-2 focus:bg-white" placeholder="Password"
-                   id="password" name="password">
-
-            @error('password')
-            <p class="border border-red-500 rounded-md bg-red-100 w-full
-             text-red-600 p-2">* {{ $message }}</p>
-            @enderror
-
-            <input type="password" class="border border-gray-200 rounded-md bg-gray-200 w-full
-             text-lg placeholder-gray-900 p-2 my-2 focus:bg-white" placeholder="Password confirmation"
-                   id="password_confirmation" name="password_confirmation">
-
-            <button type="submit" class="rounded-md bg-indigo-500 w-full text-lg text-white
-            font-semibold p-2 my-3 hover:bg-indigo-600 focus:bg-indigo-600">Send</button>
+         <button type="submit" class="btn btn-primary col-12 formButton">Enviar</button>
+         </div>
 
         </form>
-
-
-
 
     </div>
 

@@ -1,0 +1,15 @@
+#tabla td {
+    text-align: center;
+    vertical-align: middle;
+}
+
+#tabla th {
+    text-align: center;
+    vertical-align: middle;
+    background-color: rgb(243, 243, 243);
+}
+
+#tabla th:nth-child(odd) {
+    background: #e9e9e9;
+    color: #000000;
+}

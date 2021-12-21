@@ -3,9 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\SessionsController;
-use App\Http\Controllers\HomesController;
-
-
+use App\Http\Controllers\CandidatosController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -20,13 +18,6 @@ use App\Http\Controllers\HomesController;
 Route::get('/', function () {
     return view('home');
 })->middleware('auth');
-
-/*
-QUIERO SUGERIR QUE USEMOS LA FORMA DE HACER TODAS RUTAS EN FORMA AUTOMATICA,
-SERIA MÁS SENCILLO YA QUE SOLO SE HACE UNA POR CADA CONTROLADOR
- Route::resource('home', HomeController::class)->only
-*/
-
 
 Route::get('/register', [RegisterController::class, 'create'])
     ->middleware('guest')
@@ -46,7 +37,13 @@ Route::get('/logout', [SessionsController::class, 'destroy'])
     ->middleware('auth')
     ->name('login.destroy');
 
+/*
+Route::get('/candidatos', function () {
+    return view('candidatos.index');
+});
 
-//Route::get('/home', [HomesController::class, 'index']);
-//Route::post('home', [HomesController::class, 'store']);
-Route::resource('home', HomesController::class);
+Route::get('candidatos/create', [CandidatosController::class, 'create']);
+*/
+//ruta general
+Route::resource('candidatos', CandidatosController::class);
+
