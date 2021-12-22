@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Candidatos;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
 
 class CandidatosController extends Controller
@@ -16,9 +17,10 @@ class CandidatosController extends Controller
     public function index()
     {
         //
-        $datos['candidatos']=Candidatos::paginate(5);
+        $datos['candidatos']=Candidatos::paginate(10);
         return view('candidatos.index', $datos);
     }
+
 
     /**
      * Show the form for creating a new resource.
@@ -58,11 +60,11 @@ class CandidatosController extends Controller
         // $request -> foto -> move(public_path('storage/uploads'),$nombreFoto);
 
 
-        // $datosCandidatos = 
+        // $datosCandidatos =
 
         // $test = $request->all();
 
-        
+
 
         // $candidato = Candidatos::create([
         //     'Nombre'=> $request->input('Nombre'),
@@ -77,7 +79,7 @@ class CandidatosController extends Controller
         $datosCandidatos = request()->except('_token');
         $nombreFoto = $request->Nombre.'-'.time().'.'.$request->Foto->extension();
         $nombreCV = $request->Nombre.'-'.time().'.'.$request->CV->extension();
-        
+
         if($request->hasFile('Foto')){
             $datosCandidatos['Foto']=$request->file('Foto')->move('storage\uploads', $nombreFoto);
         }
@@ -125,7 +127,7 @@ class CandidatosController extends Controller
     public function update(Request $request, $id)
     {
         //
-        
+
         $datosCandidatos = request()->except(['_token', '_method']);
         $nombreFoto = $request->Nombre.'-'.time().'.'.$request->Foto->extension();
         $nombreCV = $request->Nombre.'-'.time().'.'.$request->CV->extension();
