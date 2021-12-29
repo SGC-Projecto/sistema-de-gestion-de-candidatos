@@ -1,10 +1,15 @@
 <?php
 
+
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\SessionsController;
 use App\Http\Controllers\CandidatosController;
-use App\Http\Controllers\SearchController;
+use App\Http\Controllers\MailController;
+use App\Http\Controllers\BusquedasController;
+
+use App\Mail\DerivarMailable;
+use Illuminate\Support\Facades\Mail;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -38,8 +43,6 @@ Route::get('/logout', [SessionsController::class, 'destroy'])
     ->middleware('auth')
     ->name('login.destroy');
 
-
-
 /*
 Route::get('/candidatos', function () {
     return view('candidatos.index');
@@ -49,4 +52,6 @@ Route::get('candidatos/create', [CandidatosController::class, 'create']);
 */
 //ruta general
 Route::resource('candidatos', CandidatosController::class);
+Route::resource('/buscarcandidatos', BusquedasController::class);
 
+Route::get('/enviar-derivacion', [MailController::class, 'sendEmail'] );

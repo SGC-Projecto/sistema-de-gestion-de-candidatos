@@ -1,0 +1,29 @@
+#file-override-custom .form {
+    text-align: center;
+    vertical-align: middle;
+    font-family: Arial, sans-serif;
+    background-color: #f2f2f2;
+}
+#file-override-custom label {
+    display: block;
+    padding: 5px;
+}
+
+#file-override-custom .p1 {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 25px;
+    color: #000000;
+}
+#file-override-custom div {
+    margin: 20px 0;
+}
+#file-override-custom .btn-form {
+    background: #4fb560;
+    color: #fff;
+    font-size: 14px;
+    padding: 10px 15px;
+    display: inline-block;
+    margin: 0 10px;
+    border: 1px solid #4fb560;
+    border-radius: 3px;
+}

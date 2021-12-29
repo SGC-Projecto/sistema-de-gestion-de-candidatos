@@ -1,21 +1,66 @@
 @extends('layouts.app')
 @section('meta')
-<link href="{{ asset('css/table.css') }}" rel="stylesheet" type="text/css" >
+<link href="{{ asset('css/table.css') }}" rel="stylesheet" type="text/css" title="estilos">
+<link href="{{ asset('css/form.css') }}" rel="stylesheet" type="text/css" title="estilos">
+
 @endsection
 @section('content')
-<div class="container" id="searchBar">
-    <form action="/search" method="get">
-        <div class="input-group">
-            <input type="search" name="search" id="" class="form-control">
-            <span class="input-group-prepend">
-                <button type="submit" class="btn btn-primey">Search</button>
-            </span>
-        </div>
-    </form>
-</div>
+    
 <div class="container-fluid table-responsive col-xl-8">
+
+    <div class="form" id="file-override-custom">
+        
+        
+        <form method="get" action={{ route("candidatos.index") }}>
+            @csrf 
+            <label>Nombre </label> 
+            <input type="text" name="nombre"> 
+            <br>
+    
+            <label>Apellido </label>
+            <input type="text" name="apellido">
+            <br>
+    
+            <label>Telefono </label> 
+            <input type="text" name="telefono"> 
+            <br>
+    
+            <label>Correo </label> 
+            <input type="text" name="correo"> 
+            <br>
+        
+            <div class="btn">
+                <button class="btn-form" type="submit">Buscar</button>
+            </div>
+             
+        
+        </div>
+        <table class="table table-bordered table-hover" id="tabla">
+            <thead class="thead-light">
+                
+                <tr>
+                    <th scope="col">Nombre</th>
+                    <th scope="col">Apellido</th>
+                    <th scope="col">Telefono</th>
+                    <th scope="col">Correo</th>
+                </tr>
+            </thead>
+    
+            <tbody>
+                @foreach ( $candidatos as $candidato )
+                    <tr>
+                        <td>{{ $candidato->Nombre }}</td>
+                        <td>{{ $candidato->Apellido }}</td>
+                        <td>{{ $candidato->Telefono }}</td>
+                        <td>{{ $candidato->Correo }}</td>
+                    </tr>
+                @endforeach
+            </tbody>
+        </table>
+
 <table class="table table-bordered table-hover" id="tabla">
     <thead class="thead-light">
+        <!-- TRAER DB -->
         <tr>
             <th scope="col">#</th>
             <th scope="col">Foto</th>
@@ -32,38 +77,40 @@
         @foreach ( $candidatos as $candidato )
         <tr>
             <th scope="row">{{ $candidato->id }}</th>
+
             <td style="width: 100px"><img src="{{ asset('/'.$candidato->Foto) }}" alt="" width="100px" height="100px"></td>
-            <td class="Nombre">{{ $candidato->Nombre }}</td>
-            <td class="Apellido"">{{ $candidato->Apellido }}</td>
+
+            <td>{{ $candidato->Nombre }}</td>
+            <td>{{ $candidato->Apellido }}</td>
             <td>{{ $candidato->Telefono }}</td>
             <td>{{ $candidato->Correo }}</td>
+
             <td><a style="align-self: center" class="btn btn-primary" href="{{ $candidato->CV }}" target="_blank">VER</a></td>
+
             <td style="width: 80px">
+
+                <!--EDITAR UN CANDIDATO-->
                 <div class="container d-flex flex-column">
-                <a href="{{ url('/candidatos/'.$candidato->id.'/edit')}}" class="btn btn-warning p-2" style="width: 80px; margin-bottom:5px; margin-top:5px">
-                    Editar
-                </a>
-                <!--ELIMINAR UN CANDIDATO-->
-                <form action="{{ url('/candidatos/'.$candidato->id) }}" method="post">
+                    <a href="{{ url('/candidatos/'.$candidato->id.'/edit')}}" class="btn btn-warning p-2" style="width: 80px; margin-bottom:5px; margin-top:5px"> 
+                    Editar  
+                    </a>
+
+                    <!--ELIMINAR UN CANDIDATO-->
+                    <form action="{{ url('/candidatos/'.$candidato->id) }}" method="post">
                     @csrf
                     {{ method_field('DELETE') }}
                     <input class="btn btn-danger p-2" style="width: 80px" type="submit" onclick="return confirm('¿Seguro que desea borrar este candidato?')" value="Borrar">
-                </form>
-            </div>
+                    </form>
+                </div>
             </td>
         </tr>
+        @endforeach 
 
-        @endforeach
+
+        
 
     </tbody>
 </table>
-    <div class="row justify-content-center">
-        <div class="col-4">
-            {{ $candidatos->links('vendor.pagination.bootstrap-4') }}
-        </div>
-    </div>
 </div>
-<script src="{{ asset('js/tabla.js') }}" type="text/javascript"></script>
-
 
 @endsection
