@@ -17,6 +17,8 @@ class CandidatosController extends Controller
     public function index(Request $request)
     {
         //$request->has("Nombre")
+        //trim borra los espacios en blanco que estan delante del texto
+        //$texto=trim($request->get('texto'));
 
         $nombre = $request->get("Nombre");
         $apellido = $request->get("Apellido");
@@ -31,6 +33,8 @@ class CandidatosController extends Controller
                                 ->where("Telefono", "like","%".$telefono."%")
                                 ->where("Correo", "like", "%".$correo."%")
                                 ->get();
+                             
+                                
         $parametro = [
             // key => valor,
             "candidatos" => $candidatos,
@@ -39,6 +43,7 @@ class CandidatosController extends Controller
         ];
         
         return view("candidatos.index",$parametro);
+        
     }
 
     /**
