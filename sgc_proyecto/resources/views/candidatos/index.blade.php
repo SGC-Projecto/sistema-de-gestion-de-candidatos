@@ -15,24 +15,25 @@
          <form method="get" action={{route('candidatos.index')}}>
             @csrf 
             <label>Nombre </label> 
-            <input type="text" name="nombre"> 
+            <input type="text" name="Nombre"> 
             <br>
     
             <label>Apellido </label>
-            <input type="text" name="apellido">
+            <input type="text" name="Apellido">
             <br>
     
             <label>Telefono </label> 
-            <input type="text" name="telefono"> 
+            <input type="text" name="Telefono"> 
             <br>
     
             <label>Correo </label> 
-            <input type="text" name="correo"> 
+            <input type="text" name="Correo"> 
             <br>
         
             <div class="btn">
                 <button class="btn-form" type="submit">Filtrar</button>
             </div>
+        </form>
              
         
          

@@ -48,7 +48,6 @@ class CandidatosController extends Controller
      */
     public function create()
     {
-        //
         return view('candidatos.create');
     }
 
@@ -60,41 +59,6 @@ class CandidatosController extends Controller
      */
     public function store(Request $request)
     {
-        //
-        //$datosCandidatos = request()->all();
-
-
-        // $request->validate([
-        //     'Nombre'=> 'required',
-        //     'Apellido'=> 'required',
-        //     'Telefono'=> 'required|integer|min:0|max:20',
-        //     'Correo'=> 'required',
-        //     'Foto'=>'required|mimes:png,jpg,jpeg|max:5048',
-        //     'CV'=>'required'
-        // ]);
-
-        // $nombreFoto = time().'-'.$request->foto->extension();
-
-        // dd($nombreFoto);
-        // $request -> foto -> move(public_path('storage/uploads'),$nombreFoto);
-
-
-        // $datosCandidatos = 
-
-        // $test = $request->all();
-
-        
-
-        // $candidato = Candidatos::create([
-        //     'Nombre'=> $request->input('Nombre'),
-        //     'Apellido'=> $request->input('Apellido'),
-        //     'Telefono'=> $request->input('Telefono'),
-        //     'Correo'=> $request->input('Correo'),
-        //     'Foto'=> $request->input('Foto'),
-        //     'CV'=> $request->input('CV')
-        // ]);
-
-
         $datosCandidatos = request()->except('_token');
         $nombreFoto = $request->Nombre.'-'.time().'.'.$request->Foto->extension();
         $nombreCV = $request->Nombre.'-'.time().'.'.$request->CV->extension();
@@ -120,7 +84,7 @@ class CandidatosController extends Controller
      */
     public function show(Candidatos $candidatos)
     {
-        //
+
     }
 
     /**
@@ -131,7 +95,6 @@ class CandidatosController extends Controller
      */
     public function edit($id)
     {
-        //
         $candidatos=Candidatos::findOrFail($id);
         return view('candidatos.edit', compact('candidatos'));
     }
@@ -145,8 +108,6 @@ class CandidatosController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
-        
         $datosCandidatos = request()->except(['_token', '_method']);
         $nombreFoto = $request->Nombre.'-'.time().'.'.$request->Foto->extension();
         $nombreCV = $request->Nombre.'-'.time().'.'.$request->CV->extension();
@@ -160,7 +121,6 @@ class CandidatosController extends Controller
 
         $candidatos=Candidatos::findOrFail($id);
         return view('candidatos.edit', compact('candidatos'));
-
     }
 
     /**
@@ -171,7 +131,6 @@ class CandidatosController extends Controller
      */
     public function destroy($id)
     {
-        //
         Candidatos::destroy($id);
         return redirect('candidatos');
     }
