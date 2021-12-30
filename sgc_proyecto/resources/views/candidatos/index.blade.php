@@ -9,9 +9,10 @@
 <div class="container-fluid table-responsive col-xl-8">
 
     <div class="form" id="file-override-custom">
-        
-        
-        <form method="get" action={{ route("candidatos.index") }}>
+        <h2>{{$titulo}}</h2> 
+        <!--aca en h1 pasamos la key $titulo que contiene el array $parametro -->
+         
+         <form method="get" action={{route('candidatos.index')}}>
             @csrf 
             <label>Nombre </label> 
             <input type="text" name="nombre"> 
@@ -30,34 +31,11 @@
             <br>
         
             <div class="btn">
-                <button class="btn-form" type="submit">Buscar</button>
+                <button class="btn-form" type="submit">Filtrar</button>
             </div>
              
         
-        </div>
-        <table class="table table-bordered table-hover" id="tabla">
-            <thead class="thead-light">
-                
-                <tr>
-                    <th scope="col">Nombre</th>
-                    <th scope="col">Apellido</th>
-                    <th scope="col">Telefono</th>
-                    <th scope="col">Correo</th>
-                </tr>
-            </thead>
-    
-            <tbody>
-                @foreach ( $candidatos as $candidato )
-                    <tr>
-                        <td>{{ $candidato->Nombre }}</td>
-                        <td>{{ $candidato->Apellido }}</td>
-                        <td>{{ $candidato->Telefono }}</td>
-                        <td>{{ $candidato->Correo }}</td>
-                    </tr>
-                @endforeach
-            </tbody>
-        </table>
-
+         
 <table class="table table-bordered table-hover" id="tabla">
     <thead class="thead-light">
         <!-- TRAER DB -->

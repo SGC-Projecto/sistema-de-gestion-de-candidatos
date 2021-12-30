@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Candidatos;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\DB;
 
 class CandidatosController extends Controller
 {
@@ -13,11 +14,31 @@ class CandidatosController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        //
-        $datos['candidatos']=Candidatos::paginate(10);
-        return view('candidatos.index', $datos);
+        //$request->has("Nombre")
+
+        $nombre = $request->get("Nombre");
+        $apellido = $request->get("Apellido");
+        $telefono = $request->get("Telefono");
+        $correo = $request->get("Correo");
+
+//$candidatos array de objetos y cada objeto tiene los mismos atributos que la DB que yo le pedi
+        $candidatos = DB::table("candidatos")
+                                ->select("*")
+                                ->where("Nombre", "like", "%". $nombre."%")
+                                ->where("Apellido", "like", "%".$apellido."%")
+                                ->where("Telefono", "like","%".$telefono."%")
+                                ->where("Correo", "like", "%".$correo."%")
+                                ->get();
+        $parametro = [
+            // key => valor,
+            "candidatos" => $candidatos,
+            //key =>valor
+            "titulo" => "Candidatos disponibles"
+        ];
+        
+        return view("candidatos.index",$parametro);
     }
 
     /**

@@ -51,7 +51,4 @@ Route::get('/candidatos', function () {
 Route::get('candidatos/create', [CandidatosController::class, 'create']);
 */
 //ruta general
-Route::resource('candidatos', CandidatosController::class);
-Route::resource('/buscarcandidatos', BusquedasController::class);
-
-Route::get('/enviar-derivacion', [MailController::class, 'sendEmail'] );
+Route::resource('/candidatos', CandidatosController::class);
