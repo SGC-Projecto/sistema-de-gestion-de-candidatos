@@ -6,37 +6,33 @@
 @endsection
 @section('content')
     
-<div class="container-fluid table-responsive col-xl-8">
-
-    <div class="form" id="file-override-custom">
-        <h2>{{$titulo}}</h2> 
-        <!--aca en h1 pasamos la key $titulo que contiene el array $parametro -->
-         
-         <form method="get" action={{route('candidatos.index')}}>
-            @csrf 
-            <label>Nombre </label> 
-            <input type="text" name="Nombre"> 
-            <br>
+<div class="container-fluid col-xl-8 align-items-center justif-content-center">
+    <h2>{{$titulo}}</h2> 
     
-            <label>Apellido </label>
-            <input type="text" name="Apellido">
-            <br>
-    
-            <label>Telefono </label> 
-            <input type="text" name="Telefono"> 
-            <br>
-    
-            <label>Correo </label> 
-            <input type="text" name="Correo"> 
-            <br>
-        
-            <div class="btn">
-                <button class="btn-form" type="submit">Filtrar</button>
+    <div class="form-group" id="file-override-custom">
+    <form method="get" action={{route('candidatos.index')}}>
+        @csrf 
+        <div class="container row align-items-center">
+            <div class="col-md-3 col-12 my-1">
+                <input class="form-control" type="text" name="Nombre" placeholder="Nombre"> 
             </div>
-        </form>
-             
-        
-         
+            <div class="col-md-3 col-12 my-1">
+                <input class="form-control" type="text" name="Apellido" placeholder="Apellido">
+            </div>
+            <div class="col-md-3 col-12 my-1">
+                <input class="form-control" type="text" name="Telefono" placeholder="Telefono"> 
+            </div>
+            <div class="col-md-3 col-12 my-1">
+                <input class="form-control" type="text" name="Correo" placeholder="Email"> 
+            </div>
+            <div class="col my-1">
+                <button class="btn btn-success col-12" type="submit">Filtrar</button>
+            </div>
+        </div>
+    </form>
+    </div>
+
+         <div class="table-responsive">
 <table class="table table-bordered table-hover" id="tabla">
     <thead class="thead-light">
         <!-- TRAER DB -->
@@ -90,6 +86,7 @@
 
     </tbody>
 </table>
+</div>
 </div>
 
 @endsection

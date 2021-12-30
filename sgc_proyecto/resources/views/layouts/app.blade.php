@@ -17,7 +17,7 @@
 
 <nav class="navbar navbar-expand-md navbar-dark bg-dark">
 <div class="container-fluid ">
-    <a class="navbar-brand" href="{{ '/' }}">
+    <a class="navbar-brand" href="{{ 'http://localhost/sistema-de-gestion-de-candidatos/sgc_proyecto/public/' }}">
         <img src={{ asset("Images/sgc.png")}} width="120" height="90" alt="" srcset="" />
         <span id="mainName" class="d-none d-sm-inline">Sistema de Gestion de Candidatos</span>
     </a>
@@ -32,9 +32,6 @@
         </li>
         <li class="nav-item">
             <a class="btn btn-primary navButton" href="{{route('candidatos.index') }}" style="margin: 3px">Ver candidatos</a>
-        </li>
-        <li class="nav-item">
-            <a class="btn btn-primary navButton" href="{{route('candidatos.index') }}" style="margin: 3px">Buscar candidatos</a>
         </li>
         <li class="nav-item">
         <a class="btn btn-danger navButton" href="{{route('login.destroy') }}" style="margin: 3px">Cerrar sesión</a>
