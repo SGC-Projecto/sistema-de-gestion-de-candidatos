@@ -30,9 +30,9 @@
         <div class="col-sm-3">
             <div class="card">
               <div class="card-body">
-                <h5 class="card-title">nada</h5>
-                <p class="card-text">nada.</p>
-                <a href="#" class="btn btn-primary">nada</a>
+                <h5 class="card-title">Buscar</h5>
+                <p class="card-text">Aquí podrá filtrar la lista de candidatos.</p>
+                <a href="#" class="btn btn-primary">Buscar</a>
               </div>
             </div>
           </div>
